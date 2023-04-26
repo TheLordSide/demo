@@ -15,6 +15,8 @@ class MainActivity : AppCompatActivity() {
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         val role = intent.getStringExtra("role")
         val tel = intent.getStringExtra("tel")
+        println(role)
+        println(tel)
         val relative1 = findViewById<RelativeLayout>(R.id.relativeLayout1)
         val relative2 = findViewById<RelativeLayout>(R.id.relativeLayout2)
         relative1.setOnClickListener {

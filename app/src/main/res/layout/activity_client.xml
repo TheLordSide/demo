@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ClientActivity">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -26,10 +26,10 @@
             app:endIconMode="clear_text"
             app:endIconTint="@color/purple_500"
             app:helperText="@string/Requis"
-            app:startIconDrawable="@drawable/baseline_smartphone_24"
-            app:startIconTint="@color/purple_500"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:startIconDrawable="@drawable/baseline_smartphone_24"
+            app:startIconTint="@color/purple_500">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/TelInput"
@@ -37,7 +37,8 @@
                 android:layout_height="wrap_content"
                 android:enabled="false"
                 android:inputType="phone|number"
-                android:maxLength="8" />
+                />
+
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -47,80 +48,204 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:startIconDrawable="@drawable/ic_baseline_security_24"
-            android:hint="Nom de famille"
             android:layout_marginTop="20dp"
-            app:startIconTint="@color/purple_500"
+            android:hint="Nom de famille"
+            app:endIconMode="clear_text"
             app:endIconTint="@color/purple_500"
             app:helperText="@string/Requis"
-            app:endIconMode="clear_text"
-            app:layout_constraintTop_toBottomOf="@id/Tel">
+            app:layout_constraintTop_toBottomOf="@id/Tel"
+            app:startIconDrawable="@drawable/baseline_edit_24"
+            app:startIconTint="@color/purple_500">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
                 android:id="@+id/NameInput"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:maxLength="20"/>
+                />
 
         </com.google.android.material.textfield.TextInputLayout>
-
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/Prenom"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:startIconDrawable="@drawable/ic_baseline_security_24"
-            android:hint="@string/Prenom"
             android:layout_marginTop="20dp"
-            app:startIconTint="@color/purple_500"
+            android:hint="Prenom"
+            app:endIconMode="clear_text"
             app:endIconTint="@color/purple_500"
             app:helperText="@string/Requis"
-            app:endIconMode="password_toggle"
-            app:layout_constraintTop_toBottomOf="@id/Name">
+            app:layout_constraintTop_toBottomOf="@id/Name"
+            app:startIconDrawable="@drawable/baseline_edit_24"
+            app:startIconTint="@color/purple_500">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
                 android:id="@+id/PrenomInput"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:maxLength="20"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/datePickerInputLayout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Sélectionner une date"
-            app:startIconDrawable="@drawable/ic_baseline_security_24"
-            android:layout_marginTop="20dp"
-            app:startIconTint="@color/purple_500"
-            app:endIconTint="@color/purple_500"
-            app:helperText="@string/Requis"
-            app:layout_constraintTop_toBottomOf="@id/Prenom">
-
-            <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:id="@+id/NaissanceInput"
                 android:layout_height="wrap_content"
+                android:inputType="text"
                 />
 
         </com.google.android.material.textfield.TextInputLayout>
 
 
-
-        <Button
-            android:id="@+id/Inscription"
-            style="@style/Widget.MaterialComponents.Button"
+        <LinearLayout
+            android:id="@+id/linear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/Signup"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="parent"
-            />
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@id/Prenom">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/datePickerInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="Date"
+                android:layout_marginRight="5dp"
+                app:endIconTint="@color/purple_500"
+                app:helperText="@string/Requis"
+                app:startIconDrawable="@drawable/baseline_calendar_month_24"
+                app:startIconTint="@color/purple_500">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/NaissanceInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionDone"
+                    android:inputType="none"
+                    android:singleLine="true" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/genderTextInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="Sexe"
+                android:layout_marginLeft="5dp"
+                app:helperText="@string/Requis"
+                app:endIconTint="@color/purple_500"
+                app:startIconDrawable="@drawable/baseline_man_3_24"
+                app:startIconTint="@color/purple_500"
+                app:endIconMode="dropdown_menu">
+
+                <AutoCompleteTextView
+                    android:id="@+id/genderAutoCompleteTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:imeOptions="actionDone"
+                    android:inputType="none"
+                    android:singleLine="true" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/Fachat"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="Frequence d'achat"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/purple_500"
+            app:helperText="@string/Requis"
+            app:layout_constraintTop_toBottomOf="@id/linear"
+            app:startIconDrawable="@drawable/baseline_attach_money_24"
+            app:startIconTint="@color/purple_500">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/FachatInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/Ville"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="Ville"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/purple_500"
+            app:helperText="@string/Requis"
+            app:layout_constraintTop_toBottomOf="@id/Fachat"
+            app:startIconDrawable="@drawable/baseline_location_on_24"
+            app:startIconTint="@color/purple_500">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/VilleInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/Qte"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="Quartier"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/purple_500"
+            app:helperText="@string/Requis"
+            app:layout_constraintTop_toBottomOf="@id/Ville"
+            app:startIconDrawable="@drawable/baseline_location_on_24"
+            app:startIconTint="@color/purple_500">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/QteInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/Pays"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="Pays"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/purple_500"
+            app:helperText="@string/Requis"
+            app:layout_constraintTop_toBottomOf="@id/Qte"
+            app:startIconDrawable="@drawable/baseline_location_on_24"
+            app:startIconTint="@color/purple_500">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/PaysInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/createNotify"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="20dp"
+            android:text="enregistrer"
+            app:layout_constraintTop_toBottomOf="@id/Pays" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
