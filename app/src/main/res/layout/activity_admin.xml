@@ -69,7 +69,8 @@
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:layout_margin="8dp">
+            android:layout_margin="8dp"
+            android:clickable="true">
 
             <ImageView
                 android:id="@+id/image2"
@@ -95,7 +96,8 @@
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:layout_margin="8dp">
+            android:layout_margin="8dp"
+            android:clickable="true">
 
             <ImageView
                 android:id="@+id/image3"
@@ -114,6 +116,33 @@
                 android:textAlignment="center" />
 
         </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/relativeLayout4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="8dp"
+            android:clickable="true">
+
+            <ImageView
+                android:id="@+id/image4"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/baseline_notifications_active_100" />
+
+            <TextView
+                android:id="@+id/text4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/image4"
+                android:layout_marginTop="8dp"
+                android:text="Notififications"
+                android:textAlignment="center" />
+
+        </RelativeLayout>
+
 
 
 

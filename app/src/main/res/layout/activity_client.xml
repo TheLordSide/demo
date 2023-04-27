@@ -115,7 +115,6 @@
                     android:id="@+id/NaissanceInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:imeOptions="actionDone"
                     android:inputType="none"
                     android:singleLine="true" />
 
@@ -238,7 +237,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/createNotify"
+            android:id="@+id/createClient"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

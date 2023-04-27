@@ -55,7 +55,7 @@ class NotifyActivity : AppCompatActivity() {
                         recyclerView.adapter?.notifyDataSetChanged()
 
                     } else {
-
+                        Toast.makeText(applicationContext, success, Toast.LENGTH_SHORT).show()
                     }
 
                 }

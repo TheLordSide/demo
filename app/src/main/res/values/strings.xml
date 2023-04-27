@@ -22,4 +22,6 @@
     <string name="Client">Modifier</string>
     <string name="CreateNote">Nouvelle Notification</string>
     <string name="NewNotify">Ecrivez une notification</string>
+    <string name="Clients">Clients</string>
+    <string name="Comptes">Comptes</string>
 </resources>

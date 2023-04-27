@@ -11,7 +11,7 @@ class ClientRequest {
 
     @SerializedName("Prenomclient")
     @Expose
-    var prenomlient: String? = null
+    var prenomclient: String? = null
 
     @SerializedName("Sexeclient")
     @Expose
@@ -19,7 +19,7 @@ class ClientRequest {
 
     @SerializedName("Naissanceclient")
     @Expose
-    var dateClient: Date? = null
+    var dateClient: String? = null
 
     @SerializedName("Fachatclient")
     @Expose
