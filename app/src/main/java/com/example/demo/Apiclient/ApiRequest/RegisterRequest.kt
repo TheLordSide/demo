@@ -8,7 +8,7 @@ class RegisterRequest {
     @Expose
     var phone : String? = null
 
-    @SerializedName("auteur")
+    @SerializedName("Mdpcompte")
     @Expose
     var password : String? = null
 

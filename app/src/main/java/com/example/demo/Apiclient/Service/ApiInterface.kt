@@ -4,6 +4,7 @@ package tg.intaonline.intaonline.ApiClient.service
 import com.example.demo.Apiclient.ApiResponse.ClientListeResponse
 import com.example.demo.Apiclient.ApiResponse.ClientResponse
 import com.example.demo.Apiclient.ApiResponse.CompteListeResponse
+import com.example.demo.Apiclient.ApiResponse.CompteUpdateResponse
 import com.example.demo.Apiclient.ApiResponse.NotifyCreationResponse
 import com.example.demo.Apiclient.ApiResponse.NotifyResponse
 import retrofit2.Call
@@ -36,6 +37,12 @@ interface ApiInterface {
         @Field("Contentnotif") content: String?,
         @Field("auteur") auteur: String?
     ): Call<NotifyCreationResponse>
+
+    @FormUrlEncoded
+    @POST("auth/edit.php")
+    fun editcompte(
+        @Field("Telcompte") auteur: String?
+    ): Call<CompteUpdateResponse>
 
     @FormUrlEncoded
     @POST("client/ajouter.php")
