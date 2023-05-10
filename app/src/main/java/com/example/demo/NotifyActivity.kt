@@ -28,7 +28,7 @@ class NotifyActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.Notification)
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        adapter = NotifyAdapter(dataList, this)
+       // adapter = NotifyAdapter(dataList, this)
         recyclerView.adapter = adapter
         getNotificationList()
     }

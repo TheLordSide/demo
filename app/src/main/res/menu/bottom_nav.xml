@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Discussions"
+        android:id="@+id/Discussions"
+        android:icon="@drawable/baseline_chat_24"
+        />
+    <item android:title="Notifications"
+        android:id="@+id/Notifications"
+        android:label="@string/Notify"
+        android:icon="@drawable/baseline_notifications_24"/>
+</menu>

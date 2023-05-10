@@ -10,10 +10,10 @@ import com.example.demo.R
 import tg.intaonline.intaonline.ApiClient.ApiResponse.NotifyList
 
 
-class NotifyAdapter(private var dataList : ArrayList<NotifyList>, private val context: Context): RecyclerView.Adapter<NotifyAdapter.ViewHolder>() {
+class NotifyAdapter(private var dataList : ArrayList<NotifyList>): RecyclerView.Adapter<NotifyAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(context).inflate(R.layout.items,parent,false))
+        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.items,parent,false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

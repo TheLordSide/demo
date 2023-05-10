@@ -27,4 +27,6 @@
     <string name="password_mismatch_error">Le mot de passe est différent</string>
     <string name="telVide">le numéro est vide </string>
     <string name="passVide">le mot de passe est vide</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
