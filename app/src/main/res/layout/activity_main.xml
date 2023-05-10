@@ -23,8 +23,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+
     <GridLayout
         android:layout_width="match_parent"
+        android:id="@+id/Grid"
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:alignmentMode="alignMargins"

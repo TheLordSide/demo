@@ -39,16 +39,42 @@ class RegisterActivity : AppCompatActivity() {
         val userTel = findViewById<EditText>(R.id.TelInput)
         val password = findViewById<EditText>(R.id.userPass)
         val passwordConfirmed = findViewById<EditText>(R.id.userPassconfirmed)
-        var errorPassword = findViewById<TextInputLayout>(R.id.PassWord)
-        var errorUserTel = findViewById<TextInputLayout>(R.id.Tel)
-        val errorUserPassword = findViewById<TextInputLayout>(R.id.PassWord)
+        val errorPassword = findViewById<TextInputLayout>(R.id.PassWord)
+        val errorUserTel = findViewById<TextInputLayout>(R.id.Tel)
+        val errorUserPasswordConfirmed = findViewById<TextInputLayout>(R.id.ConfirmedPassword)
 
+        if (TextUtils.isEmpty(userTel.text.toString().trim())){
+
+            errorUserTel.error = getString(R.string.telVide)
+            return
+        }
+        else{
+            errorUserTel.isErrorEnabled =false
+        }
+        if (password.text.toString().trim().isEmpty()){
+
+            errorPassword.error = getString(R.string.passVide)
+            return
+        }
+        else{
+            errorPassword.isErrorEnabled =false
+        }
+
+        if (password.text.toString().trim() != passwordConfirmed.text.toString().trim())
+        {
+            errorUserPasswordConfirmed.error = getString(R.string.password_mismatch_error)
+            return
+
+        }
+        else {
+            errorUserPasswordConfirmed.isErrorEnabled=false
+        }
 
         val api = ApiClient().getRetrofit().create(ApiInterface::class.java)
         val request = RegisterRequest()
         request.phone = userTel.text.toString().trim()
         request.password = password.text.toString().trim()
-        api.register(request.phone, request.password)?.enqueue(object : Callback<RegisterResponse> {
+        api.register(request.phone, request.password).enqueue(object : Callback<RegisterResponse> {
             override fun onResponse(
                 call: Call<RegisterResponse>,
                 response: Response<RegisterResponse>

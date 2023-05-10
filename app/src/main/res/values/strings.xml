@@ -24,4 +24,7 @@
     <string name="NewNotify">Ecrivez une notification</string>
     <string name="Clients">Clients</string>
     <string name="Comptes">Comptes</string>
+    <string name="password_mismatch_error">Le mot de passe est différent</string>
+    <string name="telVide">le numéro est vide </string>
+    <string name="passVide">le mot de passe est vide</string>
 </resources>
