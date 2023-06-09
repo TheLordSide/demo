@@ -2,12 +2,13 @@
 require_once("../config/db.php");
 include_once("../config/json-header.php");
 $pdo = getconnect();
-function userlist()
+function accounts()
 {
     global $pdo;
     try {
-        $query = $pdo->prepare("SELECT * FROM client");
+        $query = $pdo->prepare("SELECT * FROM compte");
         $query->execute();
+        $response["success"] = true;
         $response["total"] = $query->rowCount();
         $response["liste"] = $query->fetchAll(PDO::FETCH_ASSOC);
         echo json_encode($response);
@@ -17,4 +18,6 @@ function userlist()
     }
 }
 
-userlist();
+if ($_SERVER['REQUEST_METHOD']=='GET'){
+    accounts();
+}

@@ -21,11 +21,14 @@ function seconnecter(){
             $requete->bindParam(':valeur1', $_POST['Telcompte']);
             $requete->bindParam(':valeur2', $passhassed);
             $requete->execute();
-            $data= $requete->fetchAll(PDO::FETCH_ASSOC);
+            $data= $requete->fetch();
             if ($requete->rowcount()) {
+                session_start();
+                $_SESSION["Telcompte"] = $_POST['Telcompte'];
+                $_SESSION["role"] = $data['role'];
                 $response["success"] = true;
                 $response["message"] = MESSAGE_AUTH_SUCCESS;
-                $response["pseudo"] = $_POST['Telcompte'];
+                $response["tel"] = $_POST['Telcompte'];
                 $response["role"] = $data['role'];
                 echo json_encode($response);
 

@@ -37,7 +37,7 @@ function compteexite($tel,$pass){
             echo json_encode($response);
         } catch (Exception $excep) {
             $response["success"] = false;
-            $response["message"] = $excep;
+            $response["message"] = $excep->getMessage();
             echo json_encode($response);
         }
 
