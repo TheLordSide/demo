@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="Discussions"
+    <item android:title="Historique"
         android:id="@+id/Discussions"
-        android:icon="@drawable/baseline_chat_24"
+        android:iconTint="#0075be"
+        android:icon="@drawable/baseline_history_24"
+
         />
     <item android:title="Notifications"
+        android:iconTint="#0075be"
         android:id="@+id/Notifications"
-        android:label="@string/Notify"
         android:icon="@drawable/baseline_notifications_24"/>
 </menu>

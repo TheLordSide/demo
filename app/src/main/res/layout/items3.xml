@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardElevation="3dp"
+    app:cardElevation="1dp"
     app:cardCornerRadius="7dp"
     app:cardUseCompatPadding="true"
     app:cardPreventCornerOverlap="true">
@@ -32,9 +32,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
             android:text="NomHolder"
-            android:textStyle="bold"
-            android:textSize="20sp"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageHold"
             app:layout_constraintTop_toTopOf="parent"/>
@@ -44,12 +44,24 @@
             android:id="@+id/RoleHolder"
             android:layout_width="0dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:layout_height="wrap_content"
             android:text="TelHolder"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageHold"
             app:layout_constraintTop_toBottomOf="@id/NumHolder"/>
+
+        <TextView
+            android:id="@+id/DateCHolder"
+            android:layout_width="0dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_height="wrap_content"
+            android:text="DateHolder
+"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageHold"
+            app:layout_constraintTop_toBottomOf="@id/RoleHolder"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

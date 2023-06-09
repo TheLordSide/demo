@@ -24,6 +24,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <GridLayout
+        android:id="@+id/Grille"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
@@ -77,7 +78,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:scaleType="centerInside"
-                android:src="@drawable/baseline_groups_24" />
+                android:src="@drawable/baseline_question_mark" />
 
             <TextView
                 android:id="@+id/text2"
@@ -85,7 +86,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/image2"
                 android:layout_marginTop="8dp"
-                android:text="Clients"
+                android:text="Questions"
                 android:textAlignment="center" />
 
         </RelativeLayout>
@@ -141,12 +142,13 @@
                 android:text="Notififications"
                 android:textAlignment="center" />
 
+
+
         </RelativeLayout>
 
 
 
 
     </GridLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

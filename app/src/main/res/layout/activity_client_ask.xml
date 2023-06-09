@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ClientAskActivity">
+   <androidx.constraintlayout.widget.ConstraintLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:layout_marginLeft="5dp"
+       android:layout_marginTop="5dp"
+       android:layout_marginRight="5dp"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toTopOf="parent">
+
+      <com.google.android.material.textfield.TextInputLayout
+          android:id="@+id/AskMessage"
+          style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:hint="@string/MessageEntry"
+          app:endIconMode="clear_text"
+          app:endIconTint="@color/purple_500"
+          app:helperText="@string/Requis"
+          app:layout_constraintTop_toTopOf="parent"
+          app:startIconDrawable="@drawable/baseline_create_24"
+          app:startIconTint="@color/purple_500">
+
+         <com.google.android.material.textfield.TextInputEditText
+             android:id="@+id/CreateMessage"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:inputType="text"
+             android:textColorHint="#757575" />
+
+      </com.google.android.material.textfield.TextInputLayout>
+
+      <Button
+          android:id="@+id/submitQuestion"
+          style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="20dp"
+          android:text="@string/AddMessage"
+          app:layout_constraintTop_toBottomOf="@id/AskMessage" />
+
+   </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

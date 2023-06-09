@@ -31,7 +31,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="NomHolder"
+            android:text="Nom : NomHolder"
             android:textStyle="bold"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"

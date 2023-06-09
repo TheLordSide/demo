@@ -16,43 +16,58 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".CompteListeActivity"
-            android:exported="false"
+            android:name="com.glsservice.tg.AdminAnswerActivity"
             android:theme="@style/Theme.Material3.DayNight"
-            android:label="@string/Comptes"/>
+            android:label="@string/Q"
+            android:exported="false" />
         <activity
-            android:name=".ClientListeActivity"
+            android:name="com.glsservice.tg.ClientAskActivity"
+            android:exported="false"
+            android:label="@string/MessageEntry"
+            android:theme="@style/Theme.Material3.DayNight" />
+        <activity
+            android:name="com.glsservice.tg.AdminDiscussionActivity"
+            android:exported="false"
+            android:label="@string/Listedesquestions"
+            android:theme="@style/Theme.Material3.DayNight" />
+        <activity
+            android:name="com.glsservice.tg.CompteListeActivity"
+            android:exported="false"
+            android:label="@string/Comptes"
+            android:theme="@style/Theme.Material3.DayNight" />
+        <activity
+            android:name="com.glsservice.tg.ClientListeActivity"
             android:exported="false"
             android:label="@string/Clients"
             android:theme="@style/Theme.Material3.DayNight" />
         <activity
-            android:name=".AdminNotifyActivity"
+            android:name="com.glsservice.tg.AdminNotifyActivity"
             android:exported="true"
             android:label="@string/CreateNote"
             android:theme="@style/Theme.Material3.DayNight" />
         <activity
-            android:name=".NotifyActivity"
+            android:name="com.glsservice.tg.NotifyActivity"
             android:exported="false"
             android:label="@string/Notify"
             android:theme="@style/Theme.Material3.DayNight" />
         <activity
-            android:name=".ClientActivity"
+            android:name="com.glsservice.tg.ClientActivity"
             android:exported="true"
             android:label="@string/Client"
             android:theme="@style/Theme.Material3.DayNight" />
         <activity
-            android:name=".AdminActivity"
+            android:name="com.glsservice.tg.AdminActivity"
             android:exported="false" />
         <activity
-            android:name=".RegisterActivity"
+            android:name="com.glsservice.tg.RegisterActivity"
             android:exported="false"
             android:label="@string/Title2"
             android:theme="@style/Theme.Material3.DayNight" />
         <activity
-            android:name=".LoginActivity"
+            android:name="com.glsservice.tg.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashActivity"
+            android:name="com.glsservice.tg.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -61,10 +76,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name="com.glsservice.tg.MainActivity"
             android:exported="true"
-             />
-        />
+            android:label="Historique"
+            android:theme="@style/Theme.Material3.DayNight" />
     </application>
 
 </manifest>

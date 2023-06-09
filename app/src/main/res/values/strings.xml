@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">demo</string>
+    <string name="app_name">GLS service</string>
     <string name="Tel">Numéro de téléphone</string>
     <string name="Requis">Champs requis*</string>
     <string name="Mdp">Mot de passe</string>
@@ -12,11 +12,8 @@
     <string name="Prenom">Prénom</string>
     <string name="Admin">Administration</string>
     <string name="User">DASHBORD</string>
-    <string name="OTP">entrez le code de vérification</string>
-    <string name="OTPconfirmed">Confirmation</string>
-    <string name="RechercherUnCours">Rechercher un cours</string>
     <string name="ConfirmedPassword">Confirmez mot de passe</string>
-    <string name="CopyRight">© 2023</string>
+    <string name="CopyRight">GLS service ©2023</string>
     <string name="Notify">Notifications</string>
     <string name="New">Modifier</string>
     <string name="Client">Modifier</string>
@@ -26,7 +23,13 @@
     <string name="Comptes">Comptes</string>
     <string name="password_mismatch_error">Le mot de passe est différent</string>
     <string name="telVide">le numéro est vide </string>
+    <string name="AddMessage">Soumettre</string>
+    <string name="MessageEntry">Posez votre question</string>
     <string name="passVide">le mot de passe est vide</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="contenuQuestionVide">Le champs est vide</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Listedesquestions">Liste des questions</string>
+    <string name="NewAnswer">Entrez une réponse</string>
+    <string name="AnswerBtn">Répondre</string>
+    <string name="Q">Répondre à une question</string>
 </resources>
