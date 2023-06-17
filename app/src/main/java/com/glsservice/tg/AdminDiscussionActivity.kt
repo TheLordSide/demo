@@ -68,12 +68,11 @@ class AdminDiscussionActivity : AppCompatActivity() {
                         dataList.clear() // clear the existing data
                         dataList.addAll(response.body()!!.liste)
                         recyclerView.adapter?.notifyDataSetChanged()
-                        getTicket()
 
                     } else {
                         Toast.makeText(applicationContext, success, Toast.LENGTH_SHORT).show()
                     }
-
+                    getTicket()
                 }
             }
 
@@ -96,9 +95,10 @@ class AdminDiscussionActivity : AppCompatActivity() {
                     val position = recyclerView.getChildAdapterPosition(view)
                     val selectedItem = dataList[position]
                     GlobalVariables.ticketGlobal = selectedItem.Ticket.toString().trim()
-                    GlobalVariables.telClientAskGlobal = selectedItem.TelClient.toString().trim()
-                    val intent = Intent(applicationContext, AdminAnswerActivity::class.java)
+                    GlobalVariables.telGlobal = selectedItem.TelClient.toString().trim()
+                    val intent = Intent(applicationContext, AdminConvActivity::class.java)
                     startActivity(intent)
+
                 }
                 return true
             }

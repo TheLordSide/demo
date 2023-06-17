@@ -2,11 +2,13 @@ package com.glsservice.tg.Fragments
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.GestureDetector
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
@@ -14,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.glsservice.tg.Adapter.AnswerListAdapter
+import com.glsservice.tg.AdminConvActivity
 import com.glsservice.tg.Apiclient.ApiResponse.QuestionListe
 import com.glsservice.tg.Apiclient.ApiResponse.QuestionListeResponse
 import com.glsservice.tg.ClientAskActivity
@@ -22,6 +25,9 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import com.glsservice.tg.Apiclient.Service.ApiClient
+import com.glsservice.tg.ConversationActivity
+import com.glsservice.tg.LoginActivity
+import com.glsservice.tg.NotifyActivity
 import tg.intaonline.intaonline.ApiClient.service.ApiInterface
 import tg.intaonline.intaonline.Model.GlobalVariables
 
@@ -59,6 +65,35 @@ class Discussion : Fragment() {
         swipeRefresh.setOnRefreshListener {
             getAnswerList()
         }
+        recyclerView.addOnItemTouchListener(object : RecyclerView.OnItemTouchListener {
+            private val gestureDetector = GestureDetector(context, object : GestureDetector.SimpleOnGestureListener() {
+                override fun onSingleTapUp(e: MotionEvent): Boolean {
+                    val view = recyclerView.findChildViewUnder(e.x, e.y)
+                    if (view != null) {
+                        val position = recyclerView.getChildAdapterPosition(view)
+                        val selectedItem = dataList[position]
+                        GlobalVariables.ticketGlobal = selectedItem.Ticket.toString().trim()
+                        GlobalVariables.telClientAskGlobal = selectedItem.TelClient.toString().trim()
+                        val intent = Intent(activity, ConversationActivity::class.java)
+                        activity?.startActivity(intent) // Utiliser activity?.startActivity() pour éviter les nullPointerException
+                       // Toast.makeText(getActivity(), GlobalVariables.telClientAskGlobal, Toast.LENGTH_SHORT).show()
+                        return true
+                    }
+                    return false
+                }
+            })
+
+            override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
+                val childView = rv.findChildViewUnder(e.x, e.y)
+                if (childView != null && gestureDetector.onTouchEvent(e)) {
+                    return true
+                }
+                return false
+            }
+
+            override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {}
+            override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {}
+        })
 
     }
 

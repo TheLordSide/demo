@@ -21,8 +21,7 @@ class AnswerListAdapter(private var dataList : ArrayList<QuestionListe>): Recycl
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val notify = dataList[position]
         holder.question.text= notify.QuestionClient
-        holder.date.text = notify.Datereponse
-        holder.reponse.text = notify.ReponseAdmin
+        holder.date.text = notify.Datequestion       // holder.reponse.text = notify.ReponseAdmin
     }
 
     override fun getItemCount(): Int {
@@ -32,12 +31,12 @@ class AnswerListAdapter(private var dataList : ArrayList<QuestionListe>): Recycl
     class ViewHolder(itemLayoutView: View) : RecyclerView.ViewHolder(itemLayoutView) {
         var question: TextView
         var date: TextView
-        var reponse: TextView
+      //  var reponse: TextView
 
         init {
             question = itemLayoutView.findViewById(R.id.QuestionHolder)
             date = itemLayoutView.findViewById(R.id.DateReponseHolder)
-            reponse = itemLayoutView.findViewById(R.id.ReponseHolder)
+           // reponse = itemLayoutView.findViewById(R.id.ReponseHolder)
         }
     }
 }

@@ -62,7 +62,7 @@ class LoginActivity : AppCompatActivity() {
                             finish()
                             Toast.makeText(applicationContext, message , Toast.LENGTH_SHORT).show()
                         } else if (role == "admin") {
-                            GlobalVariables.telGlobal = tel
+                            GlobalVariables.telAdmin = tel
                             GlobalVariables.roleGlobal = role
                             val intent = Intent(applicationContext, AdminActivity::class.java)
                             startActivity(intent)

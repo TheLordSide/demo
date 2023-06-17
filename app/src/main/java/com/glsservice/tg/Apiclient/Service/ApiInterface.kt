@@ -56,6 +56,22 @@ interface ApiInterface {
         @Field("TelClient") Tel: String?
     ): Call<AnswerResponse>
 
+    @FormUrlEncoded
+    @POST("messages/sendmessage.php")
+    fun sendmessage(
+        @Field("QuestionClient") reponse: String?,
+        @Field("Ticket") ticket: String?,
+        @Field("TelClient") Tel: String?
+    ): Call<AnswerResponse>
+
+    @FormUrlEncoded
+    @POST("messages/receivemessage.php")
+    fun receivemessage(
+        @Field("ReponseAdmin") reponse: String?,
+        @Field("Ticket") ticket: String?,
+        @Field("TelClient") Tel: String?
+    ): Call<AnswerResponse>
+
 
     @FormUrlEncoded
     @POST("auth/edit.php")
@@ -91,6 +107,10 @@ interface ApiInterface {
 
     @GET("messages/history.php")
     fun getHistory(@Query("Telcompte") valeur: String): Call<QuestionListeResponse>
+
+    @GET("messages/chathistory.php")
+    fun getChatHistory(@Query("TelClient") valeur: String, @Query("Ticket") valeur2 : String)  : Call<QuestionListeResponse>
+
 
 
 }
