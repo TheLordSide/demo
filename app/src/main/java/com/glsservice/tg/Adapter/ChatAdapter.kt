@@ -101,10 +101,10 @@ class ChatAdapter(private var dataList: ArrayList<QuestionListe>, private val co
         var daterponse: TextView
 
         init {
-            question = itemLayoutView.findViewById(R.id.ContentQuestion)
-            datequestion = itemLayoutView.findViewById(R.id.Datequestion)
-            reponse = itemLayoutView.findViewById(R.id.ContentReponse)
-            daterponse = itemLayoutView.findViewById(R.id.DateReponse)
+            question = itemLayoutView.findViewById(R.id.text_gchat_message_me)
+            datequestion = itemLayoutView.findViewById(R.id.text_gchat_date_me)
+            reponse = itemLayoutView.findViewById(R.id.text_gchat_message_other)
+            daterponse = itemLayoutView.findViewById(R.id.text_gchat_date_other)
 
         }
     }
