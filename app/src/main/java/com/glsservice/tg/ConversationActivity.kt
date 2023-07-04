@@ -91,6 +91,7 @@ class ConversationActivity : AppCompatActivity() {
                         Toast.makeText(applicationContext, message.toString(), Toast.LENGTH_LONG)
                             .show()
                         getContent.text.clear()
+                        getChatList()
                     } else {
                         Toast.makeText(applicationContext, message.toString(), Toast.LENGTH_LONG)
                             .show()
@@ -141,4 +142,6 @@ class ConversationActivity : AppCompatActivity() {
         })
 
     }
+
+
 }

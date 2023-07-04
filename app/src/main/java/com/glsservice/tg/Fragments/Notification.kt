@@ -17,6 +17,7 @@ import retrofit2.Response
 import tg.intaonline.intaonline.Adaptater.NotifyAdapter
 import tg.intaonline.intaonline.ApiClient.ApiResponse.NotifyList
 import com.glsservice.tg.Apiclient.Service.ApiClient
+import com.glsservice.tg.Notifications.showNotification
 import tg.intaonline.intaonline.ApiClient.service.ApiInterface
 
 // TODO: Rename parameter arguments, choose names that match
@@ -38,7 +39,7 @@ class Notification : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: NotifyAdapter
 
-
+/*
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recyclerView = view.findViewById(R.id.Notification)
@@ -46,11 +47,11 @@ class Notification : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         adapter = NotifyAdapter(dataList)
         recyclerView.adapter = adapter
-
         swipeRefresh = view.findViewById(R.id.swipeRefresh)
         if (dataList.isEmpty()) {
                 getNotificationList()
         }
+        showNotification(requireContext(), "Nouvelle notification", "Vous avez des notifications en attente")
         swipeRefresh.setOnRefreshListener {
             getNotificationList()
         }
@@ -88,6 +89,66 @@ class Notification : Fragment() {
 
     }
 
+*/
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        recyclerView = view.findViewById(R.id.Notification)
+        recyclerView.setHasFixedSize(true)
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        adapter = NotifyAdapter(dataList)
+        recyclerView.adapter = adapter
+        swipeRefresh = view.findViewById(R.id.swipeRefresh)
+        if (dataList.isEmpty()) {
+            getNotificationList()
+        }
+
+        swipeRefresh.setOnRefreshListener {
+            getNotificationList()
+        }
+    }
+
+    private fun getNotificationList() {
+        val api = ApiClient().getRetrofit().create(ApiInterface::class.java)
+
+        api.getNotify()?.enqueue(object : Callback<NotifyResponse> {
+            override fun onResponse(
+                call: Call<NotifyResponse>,
+                response: Response<NotifyResponse>
+            ) {
+                if (response.isSuccessful) {
+                    val success = response.body()?.success
+                    val lastItem = dataList.lastOrNull()?.ContentNotification.toString()
+                    if (success == "true") {
+                        dataList.clear() // clear the existing data
+                        dataList.addAll(response.body()?.liste ?: emptyList())
+                        adapter.notifyDataSetChanged()
+                        if (dataList.isEmpty()) {
+
+                        }
+                        else{
+                            showNotification(
+                                requireContext(),
+                                "Nouvelle notification",
+                                lastItem
+                            )
+                        }
+                    } else {
+                        // Handle API success but empty response or other error conditions
+                    }
+                } else {
+                    // Handle API error response
+                }
+                swipeRefresh.isRefreshing = false
+            }
+
+            override fun onFailure(call: Call<NotifyResponse>, t: Throwable) {
+                val message = t.localizedMessage
+                swipeRefresh.isRefreshing = false
+                Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

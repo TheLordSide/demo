@@ -5,6 +5,13 @@ import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.RelativeLayout
+import android.widget.Toast
+import com.glsservice.tg.Apiclient.ApiResponse.AnswerResponse
+import com.glsservice.tg.Apiclient.Service.ApiClient
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import tg.intaonline.intaonline.ApiClient.service.ApiInterface
 
 class AdminActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,5 +40,65 @@ class AdminActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        val relative5 = findViewById<RelativeLayout>(R.id.relativeLayout5)
+        relative5.setOnClickListener {
+            deleteAllNotifications()
+        }
+
+        val relative6 = findViewById<RelativeLayout>(R.id.relativeLayout6)
+        relative6.setOnClickListener {
+            deleteAllConversation()
+        }
+
+
     }
+
+
+    private fun deleteAllNotifications() {
+        val api = ApiClient().getRetrofit().create(ApiInterface::class.java)
+        api.deleteAllNotifications().enqueue(object : Callback<AnswerResponse> {
+            override fun onResponse(
+                call: Call<AnswerResponse>,
+                response: Response<AnswerResponse>
+            ) {
+                val message = response.body()?.message
+
+                if (response.isSuccessful) {
+                    Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
+                }
+
+            }
+
+            override fun onFailure(call: Call<AnswerResponse>, t: Throwable) {
+                val message = t.localizedMessage
+                Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+
+
+    private fun deleteAllConversation() {
+        val api = ApiClient().getRetrofit().create(ApiInterface::class.java)
+        api.deleteAllConversation().enqueue(object : Callback<AnswerResponse> {
+            override fun onResponse(
+                call: Call<AnswerResponse>,
+                response: Response<AnswerResponse>
+            ) {
+                val message = response.body()?.message
+
+                if (response.isSuccessful) {
+                    Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
+                }
+
+            }
+
+            override fun onFailure(call: Call<AnswerResponse>, t: Throwable) {
+                val message = t.localizedMessage
+                Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+
 }

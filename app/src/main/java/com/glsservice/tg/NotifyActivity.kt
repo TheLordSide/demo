@@ -2,11 +2,14 @@ package com.glsservice.tg
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.GestureDetector
+import android.view.MotionEvent
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.glsservice.tg.Adapter.NotificationsForAdminAdapter
+import com.glsservice.tg.Apiclient.ApiResponse.AnswerResponse
 import com.glsservice.tg.Apiclient.ApiResponse.NotifyResponse
 import retrofit2.Call
 import retrofit2.Callback
@@ -20,6 +23,7 @@ class NotifyActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: NotificationsForAdminAdapter
     private lateinit var swipeRefreshLayout: SwipeRefreshLayout
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notify)
@@ -27,7 +31,7 @@ class NotifyActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.Notification)
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        adapter =NotificationsForAdminAdapter(dataList, this)
+        adapter = NotificationsForAdminAdapter(dataList, this)
         recyclerView.adapter = adapter
 
         swipeRefreshLayout = findViewById(R.id.swipeRefresh2)
@@ -47,7 +51,7 @@ class NotifyActivity : AppCompatActivity() {
     private fun getNotificationList() {
         val api = ApiClient().getRetrofit().create(ApiInterface::class.java)
 
-        api.getNotify()?.enqueue(object : Callback<NotifyResponse> {
+        api.getNotify().enqueue(object : Callback<NotifyResponse> {
             override fun onResponse(
                 call: Call<NotifyResponse>,
                 response: Response<NotifyResponse>
@@ -55,15 +59,16 @@ class NotifyActivity : AppCompatActivity() {
                 val retour = response.body()?.liste
                 val total = response.body()?.total
                 val success = response.body()?.success
-                if(swipeRefreshLayout.isRefreshing){
+                if (swipeRefreshLayout.isRefreshing) {
                     swipeRefreshLayout.isRefreshing = false
                 }
                 if (response.isSuccessful) {
-
                     if (success == "true") {
+                        deleteNotification()
                         dataList.clear() // clear the existing data
                         dataList.addAll(response.body()!!.liste)
                         recyclerView.adapter?.notifyDataSetChanged()
+
 
                     } else {
                         Toast.makeText(applicationContext, success, Toast.LENGTH_SHORT).show()
@@ -81,5 +86,50 @@ class NotifyActivity : AppCompatActivity() {
 
         })
 
+    }
+
+    private fun deleteNotification() {
+        val gestureDetector = GestureDetector(this, object : GestureDetector.SimpleOnGestureListener() {
+            override fun onSingleTapUp(e: MotionEvent): Boolean {
+                val view = recyclerView.findChildViewUnder(e.x, e.y)
+                if (view != null) {
+                    val position = recyclerView.getChildAdapterPosition(view)
+                    val selectedItem = dataList[position]
+                    val valeur = selectedItem.IdNotification.toString().trim()
+                    val api = ApiClient().getRetrofit().create(ApiInterface::class.java)
+
+                    api.deleteNotification(valeur)?.enqueue(object : Callback<AnswerResponse> {
+                        override fun onResponse(
+                            call: Call<AnswerResponse>,
+                            response: Response<AnswerResponse>
+                        ) {
+                            val message = response.body()?.message
+                            if (response.isSuccessful) {
+                               getNotificationList()
+                            }
+                        }
+
+                        override fun onFailure(call: Call<AnswerResponse>, t: Throwable) {
+                            val message = t.localizedMessage
+                            Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
+                        }
+
+                    })
+
+                }
+                return super.onSingleTapUp(e)
+            }
+        })
+
+        recyclerView.addOnItemTouchListener(object : RecyclerView.OnItemTouchListener {
+            override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
+                gestureDetector.onTouchEvent(e)
+                return false
+            }
+
+            override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {}
+
+            override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {}
+        })
     }
 }

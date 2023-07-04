@@ -24,12 +24,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <GridLayout
+
         android:id="@+id/Grille"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center"
         android:alignmentMode="alignMargins"
         android:columnCount="2"
+        android:layout_gravity="center"
         android:columnOrderPreserved="false"
         android:gravity="center"
         android:padding="10dp"
@@ -44,7 +45,8 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_margin="8dp"
-            android:clickable="true">
+            android:clickable="true"
+            android:focusable="true">
 
             <ImageView
                 android:id="@+id/image1"
@@ -60,7 +62,8 @@
                 android:layout_below="@id/image1"
                 android:layout_marginTop="8dp"
                 android:text="Nouveau"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:gravity="center"/>
 
         </RelativeLayout>
 
@@ -78,7 +81,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:scaleType="centerInside"
-                android:src="@drawable/baseline_question_mark" />
+                android:src="@drawable/baseline_message_24" />
 
             <TextView
                 android:id="@+id/text2"
@@ -86,8 +89,9 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/image2"
                 android:layout_marginTop="8dp"
-                android:text="Questions"
-                android:textAlignment="center" />
+                android:text="Discussions"
+                android:textAlignment="center"
+                android:gravity="center"/>
 
         </RelativeLayout>
 
@@ -114,7 +118,8 @@
                 android:layout_below="@id/image3"
                 android:layout_marginTop="8dp"
                 android:text="Comptes"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:gravity="center"/>
 
         </RelativeLayout>
         <RelativeLayout
@@ -140,11 +145,73 @@
                 android:layout_below="@id/image4"
                 android:layout_marginTop="8dp"
                 android:text="Notififications"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:gravity="center"/>
 
 
 
         </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/relativeLayout5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_rowWeight="1"
+            android:layout_columnSpan="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="8dp"
+            android:clickable="true">
+
+            <ImageView
+                android:id="@+id/image5"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/baseline_delete_24" />
+
+            <TextView
+                android:id="@+id/text5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/image5"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="Vider les notifications"
+                android:textAlignment="center" />
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_rowWeight="1"
+            android:layout_columnSpan="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="8dp"
+            android:clickable="true">
+
+            <ImageView
+                android:id="@+id/image6"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/baseline_delete_24" />
+
+            <TextView
+                android:id="@+id/text6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/image6"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="Vider les conversations"
+                android:textAlignment="center" />
+
+
+        </RelativeLayout>
+
 
 
 

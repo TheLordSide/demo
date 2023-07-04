@@ -11,6 +11,7 @@ import com.glsservice.tg.Apiclient.ApiResponse.NotifyCreationResponse
 import com.glsservice.tg.Apiclient.ApiResponse.NotifyResponse
 import com.glsservice.tg.Apiclient.ApiResponse.QuestionListeResponse
 import retrofit2.Call
+import retrofit2.http.DELETE
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
@@ -76,7 +77,8 @@ interface ApiInterface {
     @FormUrlEncoded
     @POST("auth/edit.php")
     fun editcompte(
-        @Field("Telcompte") auteur: String?
+        @Field("Telcompte") tel: String?,
+        @Field("role") role: String?
     ): Call<CompteUpdateResponse>
 
     @FormUrlEncoded
@@ -96,6 +98,12 @@ interface ApiInterface {
     @GET("notify/liste.php")
     fun getNotify(): Call<NotifyResponse>
 
+    @DELETE("notify/delete.php")
+    fun deleteAllNotifications(): Call<AnswerResponse>
+
+    @DELETE("messages/deleteall.php")
+    fun deleteAllConversation(): Call<AnswerResponse>
+
     @GET("client/liste.php")
     fun getList(): Call<ClientListeResponse>
 
@@ -110,6 +118,9 @@ interface ApiInterface {
 
     @GET("messages/chathistory.php")
     fun getChatHistory(@Query("TelClient") valeur: String, @Query("Ticket") valeur2 : String)  : Call<QuestionListeResponse>
+
+    @DELETE("notify/deleteanotif.php")
+    fun deleteNotification(@Query("Idnotif") valeur: String)  : Call<AnswerResponse>
 
 
 

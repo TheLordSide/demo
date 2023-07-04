@@ -52,7 +52,7 @@
             android:layout_marginStart="5dp"
             android:layout_toStartOf="@+id/button_gchat_send"
             android:background="@android:color/transparent"
-            android:hint="Posez votre question"
+            android:hint="Discutez..."
             android:inputType="text"
             android:maxLines="6"
             android:minHeight="48dp"

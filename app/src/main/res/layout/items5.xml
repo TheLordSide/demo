@@ -17,14 +17,14 @@
 
         <ImageView
             android:id="@+id/imageHold"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_width="80dp"
             android:layout_marginTop="5dp"
-            android:layout_height="80dp"
+            android:layout_marginRight="10dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
-            android:src="@drawable/baseline_history"
+            android:src="@drawable/baseline_chat_24"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -32,27 +32,38 @@
         <TextView
             android:id="@+id/QuestionHolder"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
-            android:layout_height="wrap_content"
             android:text="QuestionHolder"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageHold"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/DateReponseHolder"
             android:layout_width="0dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="25dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
             android:text="DateReponseHolder"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageHold"
-            app:layout_constraintTop_toBottomOf="@id/QuestionHolder"/>
+            app:layout_constraintTop_toBottomOf="@id/QuestionHolder" />
 
-
+        <ImageView
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/AnswerBtn"
+            android:minWidth="20dp"
+            android:minHeight="20dp"
+            android:visibility="invisible"
+            android:src="@drawable/baseline_delete_24"
+            app:layout_constraintBottom_toBottomOf="@id/DateReponseHolder"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/DateReponseHolder" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

@@ -1,20 +1,24 @@
 package com.glsservice.tg
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.core.app.NotificationCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.glsservice.tg.Adapter.ChatAdapter
+import com.glsservice.tg.Adapter.ChatAdapterAdmin
 import com.glsservice.tg.Apiclient.ApiRequest.AnswerRequest
 import com.glsservice.tg.Apiclient.ApiResponse.AnswerResponse
 import com.glsservice.tg.Apiclient.ApiResponse.QuestionListe
 import com.glsservice.tg.Apiclient.ApiResponse.QuestionListeResponse
 import com.glsservice.tg.Apiclient.Service.ApiClient
-import com.google.android.material.textfield.TextInputLayout
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -26,7 +30,7 @@ class AdminConvActivity : AppCompatActivity() {
     private val dataList = ArrayList<QuestionListe>()
     private lateinit var recyclerView: RecyclerView
     private lateinit var swipeRefreshLayout: SwipeRefreshLayout
-    private lateinit var adapter: ChatAdapter
+    private lateinit var adapter: ChatAdapterAdmin
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin_conv)
@@ -34,7 +38,7 @@ class AdminConvActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.recycler_gchat)
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        adapter = ChatAdapter(dataList, this)
+        adapter = ChatAdapterAdmin(dataList, this)
         recyclerView.adapter = adapter
         swipeRefreshLayout = findViewById(R.id.swipe_refresh_layout)
         if (dataList.isEmpty()) {
@@ -87,6 +91,9 @@ class AdminConvActivity : AppCompatActivity() {
                         Toast.makeText(applicationContext, message.toString(), Toast.LENGTH_LONG)
                             .show()
                         getContent.text.clear()
+                        getChatList()
+                        showNotification(applicationContext, "Nouvelle notification", "Ceci est le contenu de la notification.")
+
                     } else {
                         Toast.makeText(applicationContext, message.toString(), Toast.LENGTH_LONG)
                             .show()
@@ -135,5 +142,27 @@ class AdminConvActivity : AppCompatActivity() {
 
         })
 
+    }
+
+
+    private fun showNotification(context: Context, titre: String, content: String){
+        val idNotification = 1
+        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channelId = "mon_canal"
+            val channelNom = "Mon Canal de Notification"
+            val importance = NotificationManager.IMPORTANCE_DEFAULT
+            val channel = NotificationChannel(channelId, channelNom, importance)
+            notificationManager.createNotificationChannel(channel)
+        }
+
+        val notificationBuilder = NotificationCompat.Builder(context, "mon_canal")
+            .setSmallIcon(R.drawable.logo) // Icône de la notification
+            .setContentTitle(titre) // Titre de la notification
+            .setContentText(content) // Contenu de la notification
+            .setAutoCancel(true) // Fermer la notification automatiquement lorsqu'elle est cliquée
+
+        // Afficher la notification
+        notificationManager.notify(idNotification, notificationBuilder.build())
     }
 }

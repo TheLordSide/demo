@@ -31,15 +31,8 @@ class AdminNotifyActivity : AppCompatActivity() {
     }
 
     private fun createNotification(){
-        var getRole = intent.getStringExtra("role")
-        val getTel = intent.getStringExtra("tel")
+
         val content = findViewById<EditText>(R.id.CreateNote)
-        val passwordConfirmed = findViewById<EditText>(R.id.userPassconfirmed)
-        var errorPassword = findViewById<TextInputLayout>(R.id.PassWord)
-        var errorUserTel = findViewById<TextInputLayout>(R.id.Tel)
-        val errorUserPassword = findViewById<TextInputLayout>(R.id.PassWord)
-
-
         val api = ApiClient().getRetrofit().create(ApiInterface::class.java)
         val request = NotifyRequest()
         request.contentNotify = content.text.toString().trim()

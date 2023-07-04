@@ -51,7 +51,8 @@ class CompteListeActivity : AppCompatActivity() {
                     val api = ApiClient().getRetrofit().create(ApiInterface::class.java)
                     val request = ClientUpdateRequest()
                     request.phone = selectedItem.Telcompte.toString().trim()
-                    api.editcompte(request.phone)?.enqueue(object : Callback<CompteUpdateResponse> {
+                    request.role = selectedItem.role.toString().trim()
+                    api.editcompte(request.phone,request.role)?.enqueue(object : Callback<CompteUpdateResponse> {
                         override fun onResponse(
                             call: Call<CompteUpdateResponse>,
                             response: Response<CompteUpdateResponse>
@@ -64,6 +65,10 @@ class CompteListeActivity : AppCompatActivity() {
                                 if (success == "true") {
                                     // A NE PAS TOUCHER
                                     recyclerView.adapter?.notifyDataSetChanged()
+                                    getCompteList()
+                                    Toast.makeText(applicationContext, message.toString(), Toast.LENGTH_LONG)
+                                        .show()
+
                                 } else {
                                     Toast.makeText(applicationContext, message.toString(), Toast.LENGTH_LONG)
                                         .show()
