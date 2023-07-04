@@ -6,7 +6,7 @@ function accounts()
 {
     global $pdo;
     try {
-        $query = $pdo->prepare("SELECT * FROM compte");
+        $query = $pdo->prepare("SELECT * FROM compte where Idcompte> 1");
         $query->execute();
         $response["success"] = true;
         $response["total"] = $query->rowCount();

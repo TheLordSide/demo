@@ -6,7 +6,7 @@ function listofquestion()
 {
     global $pdo;
     try {
-        $query = $pdo->prepare("SELECT * FROM discussion where ReponseAdmin = 'en attente'");
+        $query = $pdo->prepare("SELECT * FROM discussion group by Ticket ");
         $query->execute();
         $response["success"] = true;
         $response["total"] = $query->rowCount();

@@ -6,7 +6,7 @@ function notifyliste()
 {
     global $pdo;
     try {
-        $query = $pdo->prepare("SELECT * FROM notification");
+        $query = $pdo->prepare("SELECT * FROM notification order by Datenotif DESC ");
         $query->execute();
         $response["success"] = true;
         $response["total"] = $query->rowCount();

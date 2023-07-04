@@ -16,6 +16,8 @@ function sendmessage()
         $insertion->bindParam('val_QuestionClient', $_POST['QuestionClient']);
         $insertion->bindParam('val_TelClient', $_POST['TelClient']);
         $insertion->execute();
+
+        saveticket($Ticket,$_POST['TelClient']);
         $response["success"] = true;
         $response["message"] = "La question a été correctement soumise";
         echo json_encode($response);
@@ -31,6 +33,22 @@ function generateTicketDiscussion(){
     return $Ticket;
 }
 
+function saveticket($ticket,$tel){
+    try {
+        global $pdo;
+        $insertion = $pdo->prepare("INSERT INTO `ticketgenereted` ( `Ticket`, `TelClient`, `Date`) 
+        VALUES ( :val_ticket, :val_TelClient, Now()); ");
+        $insertion->bindParam('val_ticket', $ticket);
+        $insertion->bindParam('val_TelClient',$tel);
+        $insertion->execute();
+    } catch (Exception $excep) {
+        $response["success"] = false;
+        $response["message"] = $excep->getMessage();
+        echo json_encode($response);
+    }
+
+
+}
 
 
 if ($_SERVER['REQUEST_METHOD']=='POST'){
