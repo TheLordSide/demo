@@ -49,7 +49,10 @@ class AdminActivity : AppCompatActivity() {
         relative6.setOnClickListener {
             deleteAllConversation()
         }
-
+        val relative7 = findViewById<RelativeLayout>(R.id.relativeLayout7)
+        relative7.setOnClickListener {
+            val intent = Intent(this, AgentActivity::class.java)
+            startActivity(intent)        }
 
     }
 

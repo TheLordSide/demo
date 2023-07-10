@@ -69,9 +69,9 @@
             android:minWidth="20dp"
             android:minHeight="20dp"
             android:src="@drawable/baseline_delete_24"
-            app:layout_constraintBottom_toBottomOf="@id/DateHolder"
+            app:layout_constraintBottom_toBottomOf="@id/ContentHolder"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/DateHolder" />
+            app:layout_constraintTop_toTopOf="@id/ContentHolder" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

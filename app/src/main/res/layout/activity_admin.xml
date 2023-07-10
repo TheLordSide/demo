@@ -11,17 +11,6 @@
     app:cardPreventCornerOverlap="false"
     app:cardUseCompatPadding="true">
 
-    <TextView
-        android:id="@+id/title"
-        style="@style/Title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:text="@string/Admin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <GridLayout
 
@@ -36,7 +25,9 @@
         android:padding="10dp"
         android:rowCount="2"
         android:useDefaultMargins="true"
-        app:layout_constraintTop_toBottomOf="@id/title">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <RelativeLayout
             android:id="@+id/relativeLayout1"
@@ -211,6 +202,37 @@
 
 
         </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout7"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_rowWeight="1"
+            android:layout_columnSpan="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="8dp"
+            android:clickable="true">
+
+            <ImageView
+                android:id="@+id/image7"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/baseline_people_24" />
+
+            <TextView
+                android:id="@+id/text7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/image7"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="commerciaux"
+                android:textAlignment="center" />
+
+
+        </RelativeLayout>
+
 
 
 

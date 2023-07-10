@@ -90,7 +90,7 @@ class NotifyActivity : AppCompatActivity() {
 
     private fun deleteNotification() {
         val gestureDetector = GestureDetector(this, object : GestureDetector.SimpleOnGestureListener() {
-            override fun onSingleTapUp(e: MotionEvent): Boolean {
+            override fun onLongPress(e: MotionEvent)   {
                 val view = recyclerView.findChildViewUnder(e.x, e.y)
                 if (view != null) {
                     val position = recyclerView.getChildAdapterPosition(view)
@@ -117,7 +117,6 @@ class NotifyActivity : AppCompatActivity() {
                     })
 
                 }
-                return super.onSingleTapUp(e)
             }
         })
 

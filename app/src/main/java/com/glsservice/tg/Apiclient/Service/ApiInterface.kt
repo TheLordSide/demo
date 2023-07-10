@@ -1,6 +1,8 @@
 package tg.intaonline.intaonline.ApiClient.service
 
 
+import com.glsservice.tg.Apiclient.ApiResponse.AgentListe
+import com.glsservice.tg.Apiclient.ApiResponse.AgentListeResponse
 import com.glsservice.tg.Apiclient.ApiResponse.AnswerResponse
 import com.glsservice.tg.Apiclient.ApiResponse.AskQuestionResponse
 import com.glsservice.tg.Apiclient.ApiResponse.ClientListeResponse
@@ -55,6 +57,15 @@ interface ApiInterface {
         @Field("ReponseAdmin") reponse: String?,
         @Field("Ticket") ticket: String?,
         @Field("TelClient") Tel: String?
+    ): Call<AnswerResponse>
+
+    @FormUrlEncoded
+    @POST("commerciaux/ajouter.php")
+    fun createAgent(
+        @Field("nom") nom: String?,
+        @Field("ville") ville: String?,
+        @Field("quartier") quartier: String?,
+        @Field("tel") tel: String?
     ): Call<AnswerResponse>
 
     @FormUrlEncoded
@@ -113,6 +124,9 @@ interface ApiInterface {
     @GET("messages/listofquestions.php")
     fun getquestions(): Call<QuestionListeResponse>
 
+    @GET("commerciaux/liste.php")
+    fun getAgents(): Call<AgentListeResponse>
+
     @GET("messages/history.php")
     fun getHistory(@Query("Telcompte") valeur: String): Call<QuestionListeResponse>
 
@@ -122,6 +136,8 @@ interface ApiInterface {
     @DELETE("notify/deleteanotif.php")
     fun deleteNotification(@Query("Idnotif") valeur: String)  : Call<AnswerResponse>
 
+    @DELETE("commerciaux/supprimer.php")
+    fun deleteAgent(@Query("nom") valeur: String,@Query("tel") valeur2: String)  : Call<AnswerResponse>
 
 
 }

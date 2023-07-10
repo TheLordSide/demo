@@ -18,11 +18,11 @@
 
         <ImageView
             android:id="@+id/imageHold"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
-            android:src="@drawable/baseline_person_24"
+            android:src="@drawable/baseline_people_24"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,110 +31,57 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="Nom : NomHolder"
-            android:textStyle="bold"
-            android:textSize="20sp"
+            android:text="NomHolder"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageHold"
             app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
-            android:id="@+id/PrenomHolder"
+            android:id="@+id/VilleHolder"
             android:layout_width="0dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:layout_height="wrap_content"
-            android:text="PrenomHolder"
-            android:textStyle="bold"
-            android:textSize="20sp"
+            android:text="VilleHolder"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageHold"
             app:layout_constraintTop_toBottomOf="@id/NomHolder"/>
+
+
+        <TextView
+            android:id="@+id/QuartierHolder"
+            android:layout_width="0dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_height="wrap_content"
+            android:text="QuartierHolder"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageHold"
+            app:layout_constraintTop_toBottomOf="@id/VilleHolder"/>
 
         <TextView
             android:id="@+id/TelHolder"
             android:layout_width="0dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:layout_height="wrap_content"
             android:text="TelHolder"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageHold"
-            app:layout_constraintTop_toBottomOf="@id/PrenomHolder"/>
-        <TextView
-            android:id="@+id/SexHolder"
-            android:layout_width="0dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_height="wrap_content"
-            android:text="SexHolder"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageHold"
-            app:layout_constraintTop_toBottomOf="@id/TelHolder"/>
-        <TextView
-            android:id="@+id/DateHolder"
-            android:layout_width="0dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_height="wrap_content"
-            android:text="DateHolder"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageHold"
-            app:layout_constraintTop_toBottomOf="@id/SexHolder"/>
-        <TextView
-            android:id="@+id/FachatHolder"
-            android:layout_width="0dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_height="wrap_content"
-            android:text="FachatHolder"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageHold"
-            app:layout_constraintTop_toBottomOf="@id/DateHolder"/>
-        <TextView
-            android:id="@+id/VilleHolder"
-            android:layout_width="0dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_height="wrap_content"
-            android:text="VilleHolder"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageHold"
-            app:layout_constraintTop_toBottomOf="@id/FachatHolder"/>
-        <TextView
-            android:id="@+id/QuartierHolder"
-            android:layout_width="0dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_height="wrap_content"
-            android:text="QuartierHolder"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageHold"
-            app:layout_constraintTop_toBottomOf="@id/VilleHolder"/>
-        <TextView
-            android:id="@+id/PaysHolder"
-            android:layout_width="0dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_height="wrap_content"
-            android:text="PaysHolder"
-            android:textStyle="bold"
-            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageHold"
             app:layout_constraintTop_toBottomOf="@id/QuartierHolder"/>
+
+        <ImageView
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/AnswerBtn"
+            android:minWidth="20dp"
+            android:minHeight="20dp"
+            android:src="@drawable/baseline_delete_24"
+            app:layout_constraintBottom_toBottomOf="@id/NomHolder"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/NomHolder" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
