@@ -30,6 +30,7 @@ class AdminNotifyActivity : AppCompatActivity() {
         return true
     }
 
+
     private fun createNotification(){
 
         val content = findViewById<EditText>(R.id.CreateNote)

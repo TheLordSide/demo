@@ -1,5 +1,7 @@
 package com.glsservice.tg
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
@@ -58,50 +60,88 @@ class AdminActivity : AppCompatActivity() {
 
 
     private fun deleteAllNotifications() {
-        val api = ApiClient().getRetrofit().create(ApiInterface::class.java)
-        api.deleteAllNotifications().enqueue(object : Callback<AnswerResponse> {
-            override fun onResponse(
-                call: Call<AnswerResponse>,
-                response: Response<AnswerResponse>
-            ) {
-                val message = response.body()?.message
 
-                if (response.isSuccessful) {
-                    Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
+        val builder = AlertDialog.Builder(this@AdminActivity)
+
+        // Définir le titre et le message de la boîte de dialogue
+        builder.setTitle("Alerte")
+        builder.setMessage("Voulez-vous confirmer la suppression?")
+
+        // Ajouter un bouton pour fermer la boîte de dialogue
+        builder.setNegativeButton("annuler") { dialogInterface: DialogInterface, _: Int ->
+            dialogInterface.dismiss() // Ferme la boîte de dialogue
+        }
+        builder.setPositiveButton("Confirmer") { dialogInterface: DialogInterface, _: Int ->
+            val api = ApiClient().getRetrofit().create(ApiInterface::class.java)
+            api.deleteAllNotifications().enqueue(object : Callback<AnswerResponse> {
+                override fun onResponse(
+                    call: Call<AnswerResponse>,
+                    response: Response<AnswerResponse>
+                ) {
+                    val message = response.body()?.message
+
+                    if (response.isSuccessful) {
+                        Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
+                    }
+
                 }
 
-            }
+                override fun onFailure(call: Call<AnswerResponse>, t: Throwable) {
+                    val message = t.localizedMessage
+                    Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
+                }
+            })
 
-            override fun onFailure(call: Call<AnswerResponse>, t: Throwable) {
-                val message = t.localizedMessage
-                Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
-            }
-        })
+        }
+        val dialog = builder.create()
+        dialog.show()
+
+
+
     }
 
 
 
     private fun deleteAllConversation() {
-        val api = ApiClient().getRetrofit().create(ApiInterface::class.java)
-        api.deleteAllConversation().enqueue(object : Callback<AnswerResponse> {
-            override fun onResponse(
-                call: Call<AnswerResponse>,
-                response: Response<AnswerResponse>
-            ) {
-                val message = response.body()?.message
 
-                if (response.isSuccessful) {
-                    Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
+        val builder = AlertDialog.Builder(this@AdminActivity)
+
+        // Définir le titre et le message de la boîte de dialogue
+        builder.setTitle("Alerte")
+        builder.setMessage("Voulez-vous confirmer la suppression?")
+
+        // Ajouter un bouton pour fermer la boîte de dialogue
+        builder.setNegativeButton("annuler") { dialogInterface: DialogInterface, _: Int ->
+            dialogInterface.dismiss() // Ferme la boîte de dialogue
+        }
+        builder.setPositiveButton("Confirmer") { dialogInterface: DialogInterface, _: Int ->
+            val api = ApiClient().getRetrofit().create(ApiInterface::class.java)
+            api.deleteAllConversation().enqueue(object : Callback<AnswerResponse> {
+                override fun onResponse(
+                    call: Call<AnswerResponse>,
+                    response: Response<AnswerResponse>
+                ) {
+                    val message = response.body()?.message
+
+                    if (response.isSuccessful) {
+                        Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
+                    }
+
                 }
 
-            }
+                override fun onFailure(call: Call<AnswerResponse>, t: Throwable) {
+                    val message = t.localizedMessage
+                    Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
+                }
+            })
+        }
 
-            override fun onFailure(call: Call<AnswerResponse>, t: Throwable) {
-                val message = t.localizedMessage
-                Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
-            }
-        })
+        val dialog = builder.create()
+        dialog.show()
+
+
     }
+
 
 
 }

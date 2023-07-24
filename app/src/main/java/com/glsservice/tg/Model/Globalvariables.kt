@@ -8,7 +8,7 @@ class GlobalVariables {
         var roleGlobal: String? = null
         var ticketGlobal: String? = null
         var telClientAskGlobal: String? = null
-
+        var telAgent: String? = null
         var telAdmin: String? = null
 
     }

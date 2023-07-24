@@ -1,5 +1,7 @@
 package com.glsservice.tg
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.GestureDetector
@@ -52,36 +54,55 @@ class CompteListeActivity : AppCompatActivity() {
                     val request = ClientUpdateRequest()
                     request.phone = selectedItem.Telcompte.toString().trim()
                     request.role = selectedItem.role.toString().trim()
-                    api.editcompte(request.phone,request.role)?.enqueue(object : Callback<CompteUpdateResponse> {
-                        override fun onResponse(
-                            call: Call<CompteUpdateResponse>,
-                            response: Response<CompteUpdateResponse>
-                        ) {
-                            val message = response.body()?.message
-                            val success = response.body()?.success
 
-                            if (response.isSuccessful) {
 
-                                if (success == "true") {
-                                    // A NE PAS TOUCHER
-                                    recyclerView.adapter?.notifyDataSetChanged()
-                                    getCompteList()
-                                    Toast.makeText(applicationContext, message.toString(), Toast.LENGTH_LONG)
-                                        .show()
+                    val builder = AlertDialog.Builder(this@CompteListeActivity)
 
-                                } else {
-                                    Toast.makeText(applicationContext, message.toString(), Toast.LENGTH_LONG)
-                                        .show()
+                    // Définir le titre et le message de la boîte de dialogue
+                    builder.setTitle("Alerte")
+                    builder.setMessage("Voulez-vous confirmer la mise à jour?")
+
+                    // Ajouter un bouton pour fermer la boîte de dialogue
+                    builder.setNegativeButton("annuler") { dialogInterface: DialogInterface, _: Int ->
+                        dialogInterface.dismiss() // Ferme la boîte de dialogue
+                    }
+                    builder.setPositiveButton("Confirmer") { dialogInterface: DialogInterface, _: Int ->
+
+                        api.editcompte(request.phone,request.role)?.enqueue(object : Callback<CompteUpdateResponse> {
+                            override fun onResponse(
+                                call: Call<CompteUpdateResponse>,
+                                response: Response<CompteUpdateResponse>
+                            ) {
+                                val message = response.body()?.message
+                                val success = response.body()?.success
+
+                                if (response.isSuccessful) {
+
+                                    if (success == "true") {
+                                        // A NE PAS TOUCHER
+                                        recyclerView.adapter?.notifyDataSetChanged()
+                                        getCompteList()
+                                        Toast.makeText(applicationContext, message.toString(), Toast.LENGTH_LONG)
+                                            .show()
+
+                                    } else {
+                                        Toast.makeText(applicationContext, message.toString(), Toast.LENGTH_LONG)
+                                            .show()
+                                    }
                                 }
+
                             }
 
-                        }
+                            override fun onFailure(call: Call<CompteUpdateResponse>, t: Throwable) {
+                                val message = t.localizedMessage
+                                Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
+                            }
+                        })
+                    }
 
-                        override fun onFailure(call: Call<CompteUpdateResponse>, t: Throwable) {
-                            val message = t.localizedMessage
-                            Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
-                        }
-                    })
+                    val dialog = builder.create()
+                    dialog.show()
+
 
                 }
             }

@@ -14,15 +14,21 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
+        android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/Theme.Material3.DayNight.NoActionBar"
         tools:targetApi="31">
         <activity
+            android:name=".TrtansfertJournalActivity"
+            android:exported="false"
+            android:label="Attribution de journaux"
+            android:theme="@style/Theme.Material3.DayNight"/>
+        <activity
             android:name=".AgentLIsteActivity"
+            android:exported="false"
             android:label="liste des agents"
-            android:theme="@style/Theme.Material3.DayNight"
-            android:exported="false" />
+            android:theme="@style/Theme.Material3.DayNight" />
         <activity
             android:name=".AgentActivity"
             android:exported="false"

@@ -84,6 +84,13 @@ interface ApiInterface {
         @Field("TelClient") Tel: String?
     ): Call<AnswerResponse>
 
+    @FormUrlEncoded
+    @POST("journaux/transfert.php")
+    fun transfert(
+        @Field("Telcommercial") Telcommercial: String?,
+        @Field("Date") Date: String?,
+        @Field("Qte") Qte: String?
+    ): Call<AnswerResponse>
 
     @FormUrlEncoded
     @POST("auth/edit.php")

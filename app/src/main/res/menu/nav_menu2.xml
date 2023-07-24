@@ -7,4 +7,10 @@
         android:icon="@drawable/baseline_more_vert_24"
         android:title="voir les agents"
         app:showAsAction="collapseActionView" />
+
+    <item
+        android:id="@+id/nav_transfert"
+        android:icon="@drawable/baseline_more_vert_24"
+        android:title="Transferez les journaux"
+        app:showAsAction="collapseActionView" />
 </menu>

@@ -1,5 +1,7 @@
 package com.glsservice.tg
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -27,6 +29,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import tg.intaonline.intaonline.ApiClient.service.ApiInterface
+import tg.intaonline.intaonline.Model.GlobalVariables
 
 class AgentLIsteActivity : AppCompatActivity() {
 
@@ -43,6 +46,8 @@ class AgentLIsteActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         adapter = AgentListAdapter(dataList, this)
         recyclerView.adapter = adapter
+        ouvrirTransfert()
+        deleteAgent()
 
         swipeRefreshLayout = findViewById(R.id.swipeRefresh2)
         if (dataList.isEmpty()) {
@@ -76,7 +81,6 @@ class AgentLIsteActivity : AppCompatActivity() {
                 }
                 if (response.isSuccessful) {
                     if (success == "true") {
-                        deleteAgent()
                         dataList.clear() // clear the existing data
                         dataList.addAll(response.body()!!.liste)
                         recyclerView.adapter?.notifyDataSetChanged()
@@ -114,33 +118,41 @@ class AgentLIsteActivity : AppCompatActivity() {
                         //val request = AgentDeleteRequest()
                         val valeur = selectedItem.nom.toString().trim()
                         val valeur2 = selectedItem.tel.toString().trim()
-                        api.deleteAgent(valeur, valeur2)
-                            ?.enqueue(object : Callback<AnswerResponse> {
-                                override fun onResponse(
-                                    call: Call<AnswerResponse>,
-                                    response: Response<AnswerResponse>
-                                ) {
+
+
+                        val builder = AlertDialog.Builder(this@AgentLIsteActivity)
+
+                        // Définir le titre et le message de la boîte de dialogue
+                        builder.setTitle("Alerte")
+                        builder.setMessage("Voulez-vous confirmer la suppression?")
+
+                        // Ajouter un bouton pour fermer la boîte de dialogue
+                        builder.setNegativeButton("annuler") { dialogInterface: DialogInterface, _: Int ->
+                            dialogInterface.dismiss() // Ferme la boîte de dialogue
+                        }
+                        builder.setPositiveButton("Confirmer") { dialogInterface: DialogInterface, _: Int ->
+                            api.deleteAgent(valeur, valeur2)?.enqueue(object : Callback<AnswerResponse> {
+                                override fun onResponse(call: Call<AnswerResponse>, response: Response<AnswerResponse>) {
                                     val message = response.body()?.message
                                     val success = response.body()?.success
 
-                                    if (response.isSuccessful) {
-
-                                        if (success == "true") {
-                                            // A NE PAS TOUCHER
-                                            recyclerView.adapter?.notifyDataSetChanged()
-                                            getAgentListe()
-                                        }
+                                    if (response.isSuccessful && success == "true") {
+                                        recyclerView.adapter?.notifyDataSetChanged()
+                                        getAgentListe()
+                                        ouvrirTransfert()
                                     }
-
                                 }
 
                                 override fun onFailure(call: Call<AnswerResponse>, t: Throwable) {
                                     val message = t.localizedMessage
-                                    Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT)
-                                        .show()
+                                    Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
                                 }
                             })
+                        }
 
+                        // Créez et affichez la boîte de dialogue
+                        val dialog = builder.create()
+                        dialog.show()
                     }
                 }
             })
@@ -155,6 +167,33 @@ class AgentLIsteActivity : AppCompatActivity() {
         })
 
     }
+
+    private fun ouvrirTransfert() {
+        val gestureDetector = GestureDetector(object : GestureDetector.SimpleOnGestureListener() {
+            override fun onSingleTapUp(e: MotionEvent): Boolean {
+                val view = recyclerView.findChildViewUnder(e.x, e.y)
+                if (view != null) {
+                    val position = recyclerView.getChildAdapterPosition(view)
+                    val selectedItem = dataList[position]
+                    GlobalVariables.telAgent = selectedItem.tel.toString().trim()
+                    val  intent = Intent(applicationContext, TrtansfertJournalActivity::class.java)
+                    startActivity(intent)
+                }
+                return true
+            }
+        })
+
+        recyclerView.addOnItemTouchListener(object : RecyclerView.OnItemTouchListener {
+            override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
+                gestureDetector.onTouchEvent(e)
+                return false
+            }
+
+            override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {}
+            override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {}
+        })
+    }
+
 
 }
 

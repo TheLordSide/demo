@@ -1,5 +1,8 @@
 package com.glsservice.tg
 
+import android.app.AlertDialog
+import android.content.Context
+import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.GestureDetector
@@ -97,24 +100,41 @@ class NotifyActivity : AppCompatActivity() {
                     val selectedItem = dataList[position]
                     val valeur = selectedItem.IdNotification.toString().trim()
                     val api = ApiClient().getRetrofit().create(ApiInterface::class.java)
+                    val builder = AlertDialog.Builder(this@NotifyActivity)
 
-                    api.deleteNotification(valeur)?.enqueue(object : Callback<AnswerResponse> {
-                        override fun onResponse(
-                            call: Call<AnswerResponse>,
-                            response: Response<AnswerResponse>
-                        ) {
-                            val message = response.body()?.message
-                            if (response.isSuccessful) {
-                               getNotificationList()
+                    // Définir le titre et le message de la boîte de dialogue
+                    builder.setTitle("Alerte")
+                    builder.setMessage("Voulez-vous confirmer la suppression?")
+
+                    // Ajouter un bouton pour fermer la boîte de dialogue
+                    builder.setNegativeButton("annuler") { dialogInterface: DialogInterface, _: Int ->
+                        dialogInterface.dismiss() // Ferme la boîte de dialogue
+                    }
+                    builder.setPositiveButton("Confirmer") { dialogInterface: DialogInterface, _: Int ->
+                        api.deleteNotification(valeur)?.enqueue(object : Callback<AnswerResponse> {
+                            override fun onResponse(
+                                call: Call<AnswerResponse>,
+                                response: Response<AnswerResponse>
+                            ) {
+                                val message = response.body()?.message
+                                if (response.isSuccessful) {
+                                    getNotificationList()
+                                }
                             }
-                        }
 
-                        override fun onFailure(call: Call<AnswerResponse>, t: Throwable) {
-                            val message = t.localizedMessage
-                            Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
-                        }
+                            override fun onFailure(call: Call<AnswerResponse>, t: Throwable) {
+                                val message = t.localizedMessage
+                                Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
+                            }
 
-                    })
+                        })// Ferme la boîte de dialogue
+                    }
+
+                    // Créez et affichez la boîte de dialogue
+                    val dialog = builder.create()
+                    dialog.show()
+
+
 
                 }
             }

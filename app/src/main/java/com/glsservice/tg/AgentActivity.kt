@@ -50,6 +50,11 @@ class AgentActivity : AppCompatActivity() {
                 val intent = Intent(applicationContext, AgentLIsteActivity::class.java)
                 startActivity(intent)
             }
+
+            R.id.nav_transfert ->{
+                val  intent = Intent(applicationContext, TrtansfertJournalActivity::class.java)
+                startActivity(intent)
+            }
         }
         return super.onOptionsItemSelected(item)
     }

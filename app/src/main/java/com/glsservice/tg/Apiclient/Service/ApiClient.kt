@@ -12,7 +12,7 @@ class ApiClient {
         val okHttpClient = OkHttpClient.Builder()
             .build()
         return Retrofit.Builder()
-            .baseUrl("https:/serviceclient.galorelotoservices.com/V1/")
+            .baseUrl("http:/192.168.1.70/api/V1/")
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
