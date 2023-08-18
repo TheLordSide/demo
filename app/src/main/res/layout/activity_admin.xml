@@ -42,7 +42,7 @@
             <ImageView
                 android:id="@+id/image1"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="100dp"
                 android:scaleType="centerInside"
                 android:src="@drawable/baseline_notification_add_24" />
 
@@ -70,7 +70,7 @@
             <ImageView
                 android:id="@+id/image2"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="100dp"
                 android:scaleType="centerInside"
                 android:src="@drawable/baseline_message_24" />
 
@@ -98,7 +98,7 @@
             <ImageView
                 android:id="@+id/image3"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="100dp"
                 android:scaleType="centerInside"
                 android:src="@drawable/baseline_admin_panel_settings_24" />
 
@@ -125,7 +125,7 @@
             <ImageView
                 android:id="@+id/image4"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="100dp"
                 android:scaleType="centerInside"
                 android:src="@drawable/baseline_notifications_active_100" />
 

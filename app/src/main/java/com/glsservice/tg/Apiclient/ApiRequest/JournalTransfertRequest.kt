@@ -11,9 +11,10 @@ class JournalTransfertRequest {
 
     @SerializedName("Qte")
     @Expose
-    var Quantity : Int? = null
+    var Quantity : String? = null
 
     @SerializedName("Date")
     @Expose
-    var DateTransfert : Date? = null
+    var DateTransfert : String? = null
+
 }

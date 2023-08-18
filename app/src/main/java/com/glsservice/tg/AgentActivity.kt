@@ -123,6 +123,10 @@ class AgentActivity : AppCompatActivity() {
                             // A NE PAS TOUCHER
                             Toast.makeText(applicationContext, message.toString(), Toast.LENGTH_LONG)
                                 .show()
+                            nom.text.clear()
+                            ville.text.clear()
+                            quartier.text.clear()
+                            phone.text.clear()
 
                         } else {
                             Toast.makeText(applicationContext, message.toString(), Toast.LENGTH_LONG)

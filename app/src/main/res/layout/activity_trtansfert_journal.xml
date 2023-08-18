@@ -25,7 +25,8 @@
             app:layout_constraintTop_toTopOf="parent"
             app:startIconDrawable="@drawable/baseline_smartphone_24"
             app:startIconTint="@color/purple_500"
-            app:helperText="@string/Requis">
+            app:helperText="@string/Requis"
+            app:endIconMode="clear_text">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/TelInput"
@@ -63,7 +64,7 @@
                 app:startIconTint="@color/purple_500">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/NaissanceInput"
+                    android:id="@+id/transfertDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="none"
@@ -72,7 +73,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/genderTextInputLayout"
+                android:id="@+id/qteLayout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -86,11 +87,11 @@
                 app:endIconMode="clear_text">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/genderAutoCompleteTextView"
+                    android:id="@+id/qteLayoutInput"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:imeOptions="actionDone"
-                    android:inputType="none"
+                    android:inputType="number"
                     android:singleLine="true"
                    />
 
@@ -99,7 +100,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/addJournal"
+            android:id="@+id/transfert"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

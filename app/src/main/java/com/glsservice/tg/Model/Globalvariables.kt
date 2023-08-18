@@ -10,6 +10,7 @@ class GlobalVariables {
         var telClientAskGlobal: String? = null
         var telAgent: String? = null
         var telAdmin: String? = null
+        var dateTransfert : String? = null
 
     }
 }
