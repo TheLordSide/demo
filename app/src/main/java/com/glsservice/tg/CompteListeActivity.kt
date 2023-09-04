@@ -50,59 +50,7 @@ class CompteListeActivity : AppCompatActivity() {
                 if (view != null) {
                     val position = recyclerView.getChildAdapterPosition(view)
                     val selectedItem = dataList[position]
-                    val api = ApiClient().getRetrofit().create(ApiInterface::class.java)
-                    val request = ClientUpdateRequest()
-                    request.phone = selectedItem.Telcompte.toString().trim()
-                    request.role = selectedItem.role.toString().trim()
-
-
-                    val builder = AlertDialog.Builder(this@CompteListeActivity)
-
-                    // Définir le titre et le message de la boîte de dialogue
-                    builder.setTitle("Alerte")
-                    builder.setMessage("Voulez-vous confirmer la mise à jour?")
-
-                    // Ajouter un bouton pour fermer la boîte de dialogue
-                    builder.setNegativeButton("annuler") { dialogInterface: DialogInterface, _: Int ->
-                        dialogInterface.dismiss() // Ferme la boîte de dialogue
-                    }
-                    builder.setPositiveButton("Confirmer") { dialogInterface: DialogInterface, _: Int ->
-
-                        api.editcompte(request.phone,request.role)?.enqueue(object : Callback<CompteUpdateResponse> {
-                            override fun onResponse(
-                                call: Call<CompteUpdateResponse>,
-                                response: Response<CompteUpdateResponse>
-                            ) {
-                                val message = response.body()?.message
-                                val success = response.body()?.success
-
-                                if (response.isSuccessful) {
-
-                                    if (success == "true") {
-                                        // A NE PAS TOUCHER
-                                        recyclerView.adapter?.notifyDataSetChanged()
-                                        getCompteList()
-                                        Toast.makeText(applicationContext, message.toString(), Toast.LENGTH_LONG)
-                                            .show()
-
-                                    } else {
-                                        Toast.makeText(applicationContext, message.toString(), Toast.LENGTH_LONG)
-                                            .show()
-                                    }
-                                }
-
-                            }
-
-                            override fun onFailure(call: Call<CompteUpdateResponse>, t: Throwable) {
-                                val message = t.localizedMessage
-                                Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
-                            }
-                        })
-                    }
-
-                    val dialog = builder.create()
-                    dialog.show()
-
+                    edit(selectedItem)
 
                 }
             }
@@ -122,6 +70,65 @@ class CompteListeActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
+    }
+
+
+   private fun edit(selectedItem : CompteList){
+
+
+        val api = ApiClient().getRetrofit().create(ApiInterface::class.java)
+        val request = ClientUpdateRequest()
+        request.phone = selectedItem.Telcompte.toString().trim()
+        request.role = selectedItem.role.toString().trim()
+
+
+        val builder = AlertDialog.Builder(this@CompteListeActivity)
+
+        // Définir le titre et le message de la boîte de dialogue
+        builder.setTitle("Alerte")
+        builder.setMessage("Voulez-vous confirmer la mise à jour?")
+
+        // Ajouter un bouton pour fermer la boîte de dialogue
+        builder.setNegativeButton("annuler") { dialogInterface: DialogInterface, _: Int ->
+            dialogInterface.dismiss() // Ferme la boîte de dialogue
+        }
+        builder.setPositiveButton("Confirmer") { dialogInterface: DialogInterface, _: Int ->
+
+            api.editcompte(request.phone,request.role)?.enqueue(object : Callback<CompteUpdateResponse> {
+                override fun onResponse(
+                    call: Call<CompteUpdateResponse>,
+                    response: Response<CompteUpdateResponse>
+                ) {
+                    val message = response.body()?.message
+                    val success = response.body()?.success
+
+                    if (response.isSuccessful) {
+
+                        if (success == "true") {
+                            // A NE PAS TOUCHER
+                            recyclerView.adapter?.notifyDataSetChanged()
+                            getCompteList()
+                            Toast.makeText(applicationContext, message.toString(), Toast.LENGTH_LONG)
+                                .show()
+
+                        } else {
+                            Toast.makeText(applicationContext, message.toString(), Toast.LENGTH_LONG)
+                                .show()
+                        }
+                    }
+
+                }
+
+                override fun onFailure(call: Call<CompteUpdateResponse>, t: Throwable) {
+                    val message = t.localizedMessage
+                    Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
+                }
+            })
+        }
+
+        val dialog = builder.create()
+        dialog.show()
+
     }
     private  fun  getCompteList(){
         val api = ApiClient().getRetrofit().create(ApiInterface::class.java)

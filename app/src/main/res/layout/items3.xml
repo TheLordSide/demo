@@ -57,11 +57,22 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
             android:layout_height="wrap_content"
-            android:text="DateHolder
-"
+            android:text="DateHolder"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageHold"
             app:layout_constraintTop_toBottomOf="@id/RoleHolder"/>
+
+        <ImageView
+            android:id="@+id/mMenus"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/AnswerBtn"
+            android:minWidth="40dp"
+            android:minHeight="40dp"
+            android:src="@drawable/baseline_more_vert_24"
+            app:layout_constraintBottom_toBottomOf="@id/RoleHolder"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/RoleHolder" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

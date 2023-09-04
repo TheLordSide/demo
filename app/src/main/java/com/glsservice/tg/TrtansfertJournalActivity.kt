@@ -52,8 +52,8 @@ class TrtansfertJournalActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.nav_Journaux -> {
-               // val intent = Intent(applicationContext, ::class.java)
-               // startActivity(intent)
+                val intent = Intent(applicationContext, JournauxTransferedActivity::class.java)
+                startActivity(intent)
             }
         }
         return super.onOptionsItemSelected(item)

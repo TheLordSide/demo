@@ -78,9 +78,9 @@
             android:minWidth="20dp"
             android:minHeight="20dp"
             android:src="@drawable/baseline_delete_24"
-            app:layout_constraintBottom_toBottomOf="@id/NomHolder"
+            app:layout_constraintBottom_toBottomOf="@id/TelHolder"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/NomHolder" />
+            app:layout_constraintTop_toTopOf="@id/TelHolder" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

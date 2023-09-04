@@ -24,32 +24,43 @@
             android:layout_marginRight="10dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
-            android:src="@drawable/baseline_chat_24"
+            android:src="@drawable/baseline_people_24"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/QuestionHolder"
+            android:id="@+id/TelAgent"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
-            android:text="QuestionHolder"
-            android:textSize="20sp"
+            android:text="TelAgent"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageHold"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/DateReponseHolder"
+            android:id="@+id/DateRecept"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
-            android:text="DateReponseHolder"
+            android:text="DateRecept"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageHold"
-            app:layout_constraintTop_toBottomOf="@id/QuestionHolder" />
+            app:layout_constraintTop_toBottomOf="@id/TelAgent" />
+
+        <TextView
+            android:id="@+id/Qterecu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:text="Qterecu"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageHold"
+            app:layout_constraintTop_toBottomOf="@id/DateRecept" />
 
         <ImageView
             android:id="@+id/button"
@@ -58,11 +69,11 @@
             android:contentDescription="@string/AnswerBtn"
             android:minWidth="20dp"
             android:minHeight="20dp"
-            android:visibility="invisible"
             android:src="@drawable/baseline_delete_24"
-            app:layout_constraintBottom_toBottomOf="@id/DateReponseHolder"
+            app:layout_constraintBottom_toBottomOf="@id/TelAgent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/DateReponseHolder" />
+            app:layout_constraintTop_toTopOf="@id/TelAgent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

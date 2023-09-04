@@ -9,6 +9,7 @@ import com.glsservice.tg.Apiclient.ApiResponse.ClientListeResponse
 import com.glsservice.tg.Apiclient.ApiResponse.ClientResponse
 import com.glsservice.tg.Apiclient.ApiResponse.CompteListeResponse
 import com.glsservice.tg.Apiclient.ApiResponse.CompteUpdateResponse
+import com.glsservice.tg.Apiclient.ApiResponse.JournauxTransferedResponse
 import com.glsservice.tg.Apiclient.ApiResponse.NotifyCreationResponse
 import com.glsservice.tg.Apiclient.ApiResponse.NotifyResponse
 import com.glsservice.tg.Apiclient.ApiResponse.QuestionListeResponse
@@ -127,6 +128,9 @@ interface ApiInterface {
 
     @GET("auth/liste.php")
     fun getAccounts(): Call<CompteListeResponse>
+
+    @GET("journaux/liste.php")
+    fun getTransfered(): Call<JournauxTransferedResponse>
 
     @GET("messages/listofquestions.php")
     fun getquestions(): Call<QuestionListeResponse>
